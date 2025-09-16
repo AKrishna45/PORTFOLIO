@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons (optional) -->
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <div class="brand">
+        <a href="#home">portfolio</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="accent">Ardhageri Krishna</span></h1>
+          <p class="lead">I build responsive web apps and craft smart,I’m a front-end developer who loves HTML, CSS, and JavaScript.</p>
+          <p class="cta-row">
+            <a href="#projects" class="btn">See Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </p>
+          <ul class="hero-meta">
+            <li><strong>Location:</strong> Anantapuram, India</li>
+            <li><strong>Available for:</strong>full-time</li>
+          </ul>
+        </div>
+
+        <div class="hero-card">
+          <div class="profile-pic">
+            <img src="./images/profile(1).jpeg" alt="Your Name">
+          </div>
+          <div class="card-info">
+            <h3>Featured</h3>
+            <p>Minimal portfolio template — clean, responsive, and easy to customize.</p>
+            <a class="small-link" href="#projects">View work →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about container">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I’m a web developer focused on building accessible, performant and beautiful user interfaces.</p>
+          <ul class="about-list">
+            <li><strong>Experience:</strong> 2+ years building websites & apps</li>
+            <li><strong>Tools:</strong> VS Code, Git, Chrome DevTools</li>
+            <li><strong>Interests:</strong> UI design, performance, animation</li>
+          </ul>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="num">12+</div>
+            <div class="label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="num">2</div>
+            <div class="label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="label">Responsive</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image"><img src="https://placehold.co/600x400/png?text=project1" alt="Project 1"></div>
+          <div class="project-body">
+            <h3>Project One</h3>
+            <p>Short description of the project.web development.</p>
+            <div class="project-foot">
+              <a href="#" class="link">Live</a>
+              <a href="#" class="link">Source</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image"><img src="https://placehold.co/600x400/png?text=Project+2" alt="Project 2"></div>
+          <div class="project-body">
+            <h3>Project Two</h3>
+            <p>Short description of the project.Database development.</p>
+            <div class="project-foot">
+              <a href="#" class="link">Live</a>
+              <a href="#" class="link">Source</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image"><img src="https://placehold.co/600x400/png?text=Project+3" alt="Project 3"></div>
+          <div class="project-body">
+            <h3>Project Three</h3>
+            <p>Short description. Focus on html and css.</p>
+            <div class="project-foot">
+              <a href="#" class="link">Live</a>
+              <a href="#" class="link">Source</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills container">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">
+          <h4>HTML</h4>
+          <div class="skill-bar"><span style="width: 80%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>CSS</h4>
+          <div class="skill-bar"><span style="width: 80%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>JavaScript</h4>
+          <div class="skill-bar"><span style="width: 85%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>PYTHON</h4>
+          <div class="skill-bar"><span style="width: 70%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>SQL</h4>
+          <div class="skill-bar"><span style="width: 90%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>C</h4>
+          <div class="skill-bar"><span style="width: 85%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <form class="contact-form" action="#" method="post">
+          <label>
+            <span>Your name</span>
+            <input type="text" name="name" required placeholder="Your name">
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="you@example.com">
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Tell me about the project..."></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+
+        <aside class="contact-aside">
+          <h3>Let's build something</h3>
+          <p>full-time availability. I usually reply within 1-2 days.</p>
+          <ul class="contact-info">
+            <li><strong>Email:</strong> ukdkittu@gmail.com.com</li>
+            <li><strong>Phone:</strong> +91 7816024363</li>
+            <li><strong>Location:</strong> Anantapuram,India</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© <span id="year"></span> kittu. built kittu</p>
+      <p class="socials">
+        <a href="#" aria-label="github">GitHub</a> · <a href="#" aria-label="linkedin">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
