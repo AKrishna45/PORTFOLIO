@@ -3,210 +3,281 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio</title>
+  <title>PORTFOLIO</title>
 
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./css/style.css ">
 
-  <!-- Font Awesome for icons (optional) -->
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
 
-  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav container">
-      <div class="brand">
-        <a href="#home">ARDHAGERI KRISHNA</a>
+  <!--navigation-->
+  <nav class="navbar">
+    <div class="logo">ARDHAGERI KRISHNA</div>
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Banner Section -->
+  <section id="home" class="banner">
+    <div class="overlay"></div>
+    <div class="banner-content">
+      <h1>HI, I’m <span>ARDHAGERI KRISHNA</span></h1>
+      <h3>Fronted Developer</h3>
+      <p>I build responsive web apps and craft smart, usable UI/UX. I’m a front-end developer who loves HTML, CSS, and JavaScript.</p>
+      <div class="cta-buttons">
+        <a href="#See Projects" class="btn ">See Projects</a>
+        <a href="#Contact Me" class="btn ">Contact Me</a>
+      </div>
+    </div>
+  </section>
+    
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+
+      <div class="about-img">
+        <img src="./images/profile(1).jpeg" alt="Profile Photo">
       </div>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
-        <span class="hamburger"></span>
-      </button>
+      <div class="about-content">
+        <p>
+          I’m a passionate <strong>Web Developer</strong> who loves creating 
+          modern, accessible, and user-friendly websites. My focus is on writing 
+          clean code, optimizing performance, and making smooth user experiences.
+        </p> 
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <h1>Hi, I'm <span class="accent">Ardhageri Krishna</span></h1>
-          <p class="lead">I build responsive web apps and craft smart,I’m a front-end developer who loves HTML, CSS, and JavaScript.</p>
-          <p class="cta-row">
-            <a href="#projects" class="btn">See Projects</a>
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
-          </p>
-          <ul class="hero-meta">
-            <li><strong>Location:</strong> Anantapuram, India</li>
-            <li><strong>Available for:</strong>full-time</li>
-          </ul>
-        </div>
-
-        <div class="hero-card">
-          <div class="profile-pic">
-            <img src="./images/profile(1).jpeg" alt="Your Name">
-          </div>
-          <div class="card-info">
-            <h3>Featured</h3>
-            <p>Minimal portfolio — clean responsive.</p>
-            <a class="small-link" href="#projects">View work →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about container">
-      <h2>About Me</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>I’m a web developer focused on building accessible, performant and beautiful user interfaces.</p>
-          <ul class="about-list">
-            <li><strong>Experience:</strong> 2+ years building websites & apps</li>
-            <li><strong>Tools:</strong> VS Code, Git, Chrome DevTools</li>
-            <li><strong>Interests:</strong> UI design, performance, animation</li>
-          </ul>
-        </div>
+        <ul class="about-list">
+          <li><i class="fa-solid fa-briefcase"></i> <strong>Experience:</strong> 2+ Years</li>
+          <li><i class="fa-solid fa-wrench"></i> <strong>Tools:</strong> VS Code, Git, Figma</li>
+          <li><i class="fa-solid fa-lightbulb"></i> <strong>Interests:</strong> UI Design, Animation, AI</li>
+        </ul>
+        <!-- Stats -->
         <div class="about-stats">
           <div class="stat">
-            <div class="num">12+</div>
-            <div class="label">Projects</div>
+            <span class="num">15+</span>
+            <span class="label">Projects</span>
           </div>
           <div class="stat">
-            <div class="num">2</div>
-            <div class="label">Years Experience</div>
+            <span class="num">2</span>
+            <span class="label">Years Experience</span>
           </div>
           <div class="stat">
-            <div class="num">100%</div>
-            <div class="label">Responsive</div>
+            <span class="num">100%</span>
+            <span class="label">Responsive</span>
           </div>
         </div>
+        <a href="#banner" class="btn Read-more">Read More</a><br>
+        <!-- Social Links -->
+        <div class="social-icons">
+          <a href="https://github.com/AKrishna45" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://github.com/AKrishna45" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/AKrishna45" target="_blank"><i class="fab fa-hackerrank"></i></a>
+        </div>
       </div>
+
+    </div>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="education">
+    <h2>My Education</h2>
+    <div class="timeline">
+
+      <div class="edu-item">
+        <div class="edu-content">
+          <h3>B.Tech - Computer Science</h3>
+          <p><strong>Vel Tech University</strong></p>
+          <p>CGPA: 8.2</p>
+          <p>Currently in 3rd Year</p>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-content">
+          <h3>Intermediate - MPC</h3>
+          <p><strong>Narayana Junior College</strong></p>
+          <p>CGPA: 8.7 (87%)</p>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-content">
+          <h3>SSC (10th Class)</h3>
+          <p><strong>Sri chaitanya E.M High School</strong></p>
+          <p>CGPA: 10</p>
+        </div>
+      </div>
+
+    </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="projects container">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-image"><img src="https://placehold.co/600x400/png?text=project1" alt="Project 1"></div>
-          <div class="project-body">
-            <h3>Project One</h3>
-            <p>Short description of the project.web development.</p>
-            <div class="project-foot">
-              <a href="#" class="link">Live</a>
-              <a href="#" class="link">Source</a>
-            </div>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="project-image"><img src="https://placehold.co/600x400/png?text=Project+2" alt="Project 2"></div>
-          <div class="project-body">
-            <h3>Project Two</h3>
-            <p>Short description of the project.Database development.</p>
-            <div class="project-foot">
-              <a href="#" class="link">Live</a>
-              <a href="#" class="link">Source</a>
-            </div>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="project-image"><img src="https://placehold.co/600x400/png?text=Project+3" alt="Project 3"></div>
-          <div class="project-body">
-            <h3>Project Three</h3>
-            <p>Short description. Focus on html and css.</p>
-            <div class="project-foot">
-              <a href="#" class="link">Live</a>
-              <a href="#" class="link">Source</a>
-            </div>
-          </div>
-        </article>
-      </div>
+    <section id="projects" class="projects">
+    <h2>My Projects </h2>
+    <div class="projects-container">
+
+      <article class="project-card">
+        <img src="./images/resturant.jpeg" alt="Restaurant Website">
+        <div class="project-info">
+          <h3>Restaurant Website</h3>
+          <p>A clean and responsive restaurant website built with HTML, CSS, and JavaScript.</p>
+          <a href="https://akrishna45.github.io/resturant/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="./images/gallery.jpeg" alt="Gallery Section">
+        <div class="project-info">
+          <h3>Gallery Section</h3>
+          <p>A modern responsive gallery section with smooth animations and a grid layout.</p>
+          <a href="https://akrishna45.github.io/galler-section/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="./images/cards.jpeg" alt="Cards Section">
+        <div class="project-info">
+          <h3>Cards Section</h3>
+          <p>Visually appealing card layout designed with hover effects and animations.</p>
+          <a href="https://akrishna45.github.io/cards-section/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="./images/digital marketing.jpeg" alt="Digital Marketing Website">
+        <div class="project-info">
+          <h3>Digital Marketing</h3>
+          <p>Responsive digital marketing site that helps businesses grow online.</p>
+          <a href="https://akrishna45.github.io/Digitalmarketing/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <img src="./images/GOOGLE.jpeg" alt="Digital Marketing Website">
+        <div class="project-info">
+          <h3>Google</h3>
+          <p>Responsive digital marketing site that helps businesses grow online.</p>
+          <a href="https://akrishna45.github.io/googlepages/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <img src="./images/BLOG.jpeg" alt="Digital Marketing Website">
+        <div class="project-info">
+          <h3>Blog</h3>
+          <p>Responsive digital marketing site that helps businesses grow online.</p>
+          <a href="https://akrishna45.github.io/blogs-section/" target="_blank" class="btn">View Project</a>
+        </div>
+      </article>
+    </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="skills container">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">
-          <h4>HTML</h4>
-          <div class="skill-bar"><span style="width: 80%"></span></div>
+    <section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-card">
+        <div class="circle" data-percent="95">
+         <svg>
+           <circle cx="60" cy="60" r="54"></circle>
+           <circle cx="60" cy="60" r="54"></circle>
+         </svg>
+         <div class="number">95%</div>
         </div>
-        <div class="skill">
-          <h4>CSS</h4>
-          <div class="skill-bar"><span style="width: 80%"></span></div>
-        </div>
-        <div class="skill">
-          <h4>JavaScript</h4>
-          <div class="skill-bar"><span style="width: 85%"></span></div>
-        </div>
-        <div class="skill">
-          <h4>PYTHON</h4>
-          <div class="skill-bar"><span style="width: 70%"></span></div>
-        </div>
-        <div class="skill">
-          <h4>SQL</h4>
-          <div class="skill-bar"><span style="width: 90%"></span></div>
-        </div>
-        <div class="skill">
-          <h4>C</h4>
-          <div class="skill-bar"><span style="width: 85%"></span></div>
-        </div>
+        <h4>HTML & CSS</h4>
       </div>
+
+      <div class="skill-card">
+        <div class="circle" data-percent="85">
+          <svg>
+            <circle cx="60" cy="60" r="54"></circle>
+            <circle cx="60" cy="60" r="54"></circle>
+          </svg>
+          <div class="number">85%</div>
+        </div>
+        <h4>JavaScript</h4>
+      </div>
+
+      <div class="skill-card">
+        <div class="circle" data-percent="75">
+          <svg>
+           <circle cx="60" cy="60" r="54"></circle>
+           <circle cx="60" cy="60" r="54"></circle>
+          </svg>
+          <div class="number">75%</div>
+        </div>
+        <h4>React</h4>
+      </div>
+
+      <div class="skill-card">
+        <div class="circle" data-percent="80">
+          <svg>
+           <circle cx="60" cy="60" r="54"></circle>
+           <circle cx="60" cy="60" r="54"></circle>
+          </svg>
+         <div class="number">80%</div>
+        </div>
+        <h4>Git & Workflow</h4>
+      </div>
+    </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact container">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <form class="contact-form" action="#" method="post">
-          <label>
-            <span>Your name</span>
-            <input type="text" name="name" required placeholder="Your name">
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required placeholder="you@example.com">
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="5" placeholder="Tell me about the project..."></textarea>
-          </label>
-          <button class="btn" type="submit">Send message</button>
-        </form>
+    <!--contact-->
+    <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <h2>contact</h2>
+      <p>Have a project or question? Fill out the form and I’ll get back to you as soon as possible.</p>
 
-        <aside class="contact-aside">
-          <h3>Let's build something</h3>
-          <p>full-time availability. I usually reply within 1-2 days.</p>
-          <ul class="contact-info">
-            <li><strong>Email:</strong> ukdkittu@gmail.com.com</li>
-            <li><strong>Phone:</strong> +91 7816024363</li>
-            <li><strong>Location:</strong> Anantapuram,India</li>
-          </ul>
-        </aside>
+      <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <input type="text" id="fullname" required />
+        <label for="fullname">Full Name</label>
       </div>
+
+      <div class="form-group">
+        <input type="email" id="email" required />
+        <label for="email">Email Address</label>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" id="phone" pattern="[0-9]{10}" required />
+        <label for="phone">Phone Number</label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="message" rows="5" required></textarea>
+        <label for="message">Your Message</label>
+      </div>
+
+      <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
     </section>
+
+
+    <!--footer-->
+    <footer class="footer">
+     <div class="footer-container">
+       <p>© 2025 Ardhageri Krishna. All Rights Reserved.</p>
+     </div>
+    </footer>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© <span id="year"></span> kittu. built kittu</p>
-      <p class="socials">
-        <a href="#" aria-label="github">GitHub</a> · <a href="#" aria-label="linkedin">LinkedIn</a>
-      </p>
-    </div>
-  </footer>
-
+  <!-- JavaScript for interactivity -->
   <script src="./js/script.js"></script>
 
 </body>
