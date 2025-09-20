@@ -1,103 +1,100 @@
-// =====================
-// Mobile Menu Toggle
-// =====================
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+// Navbar Toggle (Hamburger Menu)
 
-menuToggle.addEventListener("change", () => {
-  if (menuToggle.checked) {
-    navLinks.style.right = "0";
-  } else {
-    navLinks.style.right = "-100%";
-  }
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+  hamburger.classList.toggle("open");
 });
 
-// Close menu when clicking a link (mobile)
-document.querySelectorAll(".nav-links a").forEach(link => {
+// Close menu when clicking a nav link
+document.querySelectorAll(".nav-link").forEach((link) =>
   link.addEventListener("click", () => {
-    menuToggle.checked = false;
-    navLinks.style.right = "-100%";
-  });
-});
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("open");
+  })
+);
 
+// Active Link on Scroll
 
-// =====================
-// Animate Skills Circles
-// =====================
-function animateSkills() {
-  document.querySelectorAll(".circle").forEach(circle => {
-    let percent = circle.getAttribute("data-percent");
-    let number = circle.querySelector(".number");
-
-    circle.style.setProperty("--percent", percent);
-
-    // Animate number counting
-    let count = 0;
-    let interval = setInterval(() => {
-      if (count >= percent) {
-        clearInterval(interval);
-      } else {
-        count++;
-        number.textContent = count + "%";
-      }
-    }, 20);
-  });
-}
-
-// Trigger animation when skills section is visible
-const skillsSection = document.querySelector("#skills");
-let skillsAnimated = false;
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
-  const sectionTop = skillsSection.offsetTop - 300;
-  if (window.scrollY >= sectionTop && !skillsAnimated) {
-    animateSkills();
-    skillsAnimated = true;
-  }
-});
+  let current = "";
 
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
 
-// =====================
-// Smooth Scrolling
-// =====================
-document.querySelectorAll('.nav-links a, .cta-buttons a').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    if (this.getAttribute("href").startsWith("#")) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
     }
   });
 });
 
 
-// =====================
-// Contact Form (EmailJS)
-// =====================
-(function() {
+// Smooth Scroll
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
+
+// EmailJS Integration
+
+// Initialize EmailJS with your public key
+(function () {
   emailjs.init("i7WeBHRUlI2YwQ8b-"); // Replace with your EmailJS Public Key
 })();
 
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", function(e) {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const params = {
-    fullname: document.getElementById("fullname").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    message: document.getElementById("message").value,
-  };
+    const name = contactForm.querySelector('input[placeholder="Your Name"]').value.trim();
+    const email = contactForm.querySelector('input[placeholder="Your Email"]').value.trim();
+    const subject = contactForm.querySelector('input[placeholder="Subject"]').value.trim();
+    const message = contactForm.querySelector("textarea").value.trim();
 
-  emailjs.send("service_wefgwum", "template_4cd4jvg", params)
-    .then(() => {
-      alert("Message sent successfully!");
-      contactForm.reset();
-    })
-    .catch(() => {
-      alert("Failed to send message. Try again later.");
-    });
-});
+    if (name === "" || email === "" || subject === "" || message === "") {
+      alert("⚠️ Please fill out all fields.");
+      return;
+    }
+
+    // Send email with EmailJS
+    emailjs
+      .send("service_wefgwum", "template_4cd4jvg", {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+      })
+      .then(
+        (response) => {
+          alert("✅ Thank you! Your message has been sent.");
+          contactForm.reset();
+        },
+        (error) => {
+          alert("❌ Failed to send message. Please try again later.");
+          console.error("EmailJS Error:", error);
+        }
+      );
+  });
+}
