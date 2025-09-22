@@ -55,6 +55,7 @@ const contactForm = document.getElementById("contactForm");
 contactForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  
   const name = this.querySelector('input[placeholder="Your Name"]').value;
   const email = this.querySelector('input[placeholder="Your Email"]').value;
   const subject = this.querySelector('input[placeholder="Subject"]').value;
