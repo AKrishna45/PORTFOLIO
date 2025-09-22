@@ -1,194 +1,81 @@
-// ============================
-// Smooth scrolling for navigation links
-// ============================
-const navLinks = document.querySelectorAll('.nav-link');
+// ====== Mobile Navbar Toggle ======
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+  hamburger.classList.toggle("active");
 });
 
-// ============================
-// Active navigation link highlighting
-// ============================
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const scrollPosition = window.scrollY + 100;
+// Close navbar when link is clicked
+document.querySelectorAll(".nav-link").forEach(link =>
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("active");
+  })
+);
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
+// ====== Active Nav Highlight on Scroll ======
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
-            if (activeLink) activeLink.classList.add('active');
-        }
-    });
-});
-
-// ============================
-// Navbar background change on scroll
-// ============================
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
     }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
 });
 
-// ============================
-// Contact form handling + EmailJS
-// ============================
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = contactForm.querySelector('input[type="text"]').value.trim();
-        const email = contactForm.querySelector('input[type="email"]').value.trim();
-        const subject = contactForm.querySelector('input[placeholder="Subject"]').value.trim();
-        const message = contactForm.querySelector('textarea').value.trim();
-
-        if (!name || !email || !subject || !message) {
-            showNotification('⚠️ Please fill in all fields', 'error');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showNotification('⚠️ Please enter a valid email address', 'error');
-            return;
-        }
-
-        // ====================
-        // EmailJS Send Email
-        // ====================
-        emailjs.send("service_wefgwum", "template_4cd4jvg", {
-            from_name: name,
-            from_email: email,
-            subject: subject,
-            message: message
-        }, "i7WeBHRUlI2YwQ8b-")
-        .then(() => {
-            showNotification('✅ Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-        })
-        .catch((error) => {
-            showNotification('❌ Failed to send message. Please try again.', 'error');
-            console.error("EmailJS Error:", error);
-        });
+// ====== Smooth Scroll (optional: modern browsers support scroll-behavior in CSS) ======
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
     });
-}
-
-// Email validation function
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Notification function
-function showNotification(message, type) {
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) existingNotification.remove();
-
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        z-index: 9999;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        ${type === 'success' ? 'background: #10b981;' : 'background: #ef4444;'}
-    `;
-
-    document.body.appendChild(notification);
-
-    setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => { notification.remove(); }, 300);
-    }, 3000);
-}
-
-// ============================
-// Other animations & features (unchanged from your code)
-// ============================
-
-// Animate elements on scroll
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .timeline-item, .stat, .contact-item');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+  });
 });
 
-// Counter animation for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-        const target = counter.textContent;
-        const isDecimal = target.includes('.');
-        const numericTarget = parseFloat(target);
-        const increment = numericTarget / 50;
-        let current = 0;
+// ====== EmailJS Integration ======
+// Init EmailJS (replace YOUR_PUBLIC_KEY with your key)
+(function() {
+  emailjs.init("i7WeBHRUlI2YwQ8b-"); 
+})();
 
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= numericTarget) {
-                counter.textContent = target;
-                clearInterval(timer);
-            } else {
-                counter.textContent = isDecimal ? current.toFixed(1) : Math.ceil(current) + (target.includes('+') ? '+' : '');
-            }
-        }, 30);
-    });
-}
+const contactForm = document.getElementById("contactForm");
 
-const aboutSection = document.querySelector('#about');
-const aboutObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            aboutObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-aboutObserver.observe(aboutSection);
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Collect form values
+  const name = this.querySelector('input[placeholder="Your Name"]').value;
+  const email = this.querySelector('input[placeholder="Your Email"]').value;
+  const subject = this.querySelector('input[placeholder="Subject"]').value;
+  const message = this.querySelector("textarea").value;
+
+  // Replace service_xxx and template_xxx with your EmailJS IDs
+  emailjs.send("service_wefgwum", "template_4cd4jvg", {
+    from_name: name,
+    from_email: email,
+    subject: subject,
+    message: message,
+  })
+  .then(() => {
+    alert("✅ Message sent successfully!");
+    contactForm.reset();
+  })
+  .catch((error) => {
+    console.error("❌ EmailJS Error:", error);
+    alert("⚠️ Failed to send message. Please try again.");
+  });
+})
