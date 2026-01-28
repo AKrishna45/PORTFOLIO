@@ -14,7 +14,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
   });
 });
 
-// ================= Active Nav Highlight on Scroll =================
+// ==============Active Nav Highlight on Scroll ==============
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
